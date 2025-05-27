@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration - Shri Chattrapati Shivaji Maharaj Hospital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Additional styles for registration page */
+        .register-section {
+            padding-top: 120px;
+            background-color: var(--light-gray);
+            min-height: 100vh;
+        }
+        
+        .register-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+        }
+        
+        .register-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .register-header h2 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .register-header p {
+            color: var(--text-light);
+        }
+        
+        .register-form {
+            margin-top: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            margin-right: 8px;
+        }
+        
+        .checkbox-group {
+            margin-top: 20px;
+        }
+        
+        .checkbox-option {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-option input {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid, .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn-container .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Hospital Logo" class="logo">
+            <div class="hospital-name">
+                <h1>Shri Chattrapati Shivaji Maharaj Hospital</h1>
+                <p>Excellence in Healthcare</p>
+            </div>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#departments">Departments</a></li>
+                <li><a href="index.html#doctors">Doctors</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#appointments">Appointments</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#login" class="login-btn">Patient Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="register-section">
+            <div class="register-container">
+                <div class="register-header">
+                    <h2>Patient Registration Form</h2>
+                    <p>Please fill out the form below to register as a new patient</p>
+                </div>
+                
+                <form class="register-form" id="registrationForm">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="middleName">Middle Name</label>
+                                <input type="text" id="middleName" name="middleName">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dob">Date of Birth <span class="required">*</span></label>
+                                <input type="date" id="dob" name="dob" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" name="age" min="0" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label>Gender <span class="required">*</span></label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="male" name="gender" value="male" required>
+                                        <label for="male">Male</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female">Female</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="other" name="gender" value="other">
+                                        <label for="other">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="maritalStatus">Marital Status</label>
+                                <select id="maritalStatus" name="maritalStatus">
+                                    <option value="">Select</option>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                    <option value="divorced">Divorced</option>
+                                    <option value="widowed">Widowed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">Nationality</label>
+                                <input type="text" id="nationality" name="nationality" value="Indian">
+                            </div>
+                            <div class="form-group">
+                                <label for="aadhar">Aadhar Number</label>
+                                <input type="text" id="aadhar" name="aadhar" maxlength="12" placeholder="XXXX XXXX XXXX">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-address-book"></i> Contact Information</h3>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number <span class="required">*</span></label>
+                                <input type="tel" id="mobile" name="mobile" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="address">Address <span class="required">*</span></label>
+                                <textarea id="address" name="address" rows="3" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="city">City <span class="required">*</span></label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State <span class="required">*</span></label>
+                                <input type="text" id="state" name="state" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pincode">Pincode <span class="required">*</span></label>
+                                <input type="text" id="pincode" name="pincode" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country <span class="required">*</span></label>
+                                <input type="text" id="country" name="country" value="India" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medical Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-notes-medical"></i> Medical Information</h3>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="bloodGroup">Blood Group</label>
+                                <select id="bloodGroup" name="bloodGroup">
+                                    <option value="">Select</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" id="height" name="height" min="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="weight">Weight (kg)</label>
+                                <input type="number" id="weight" name="weight" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Known Allergies</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="allergyYes" name="hasAllergies" value="yes">
+                                        <label for="allergyYes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="allergyNo" name="hasAllergies" value="no" checked>
+                                        <label for="allergyNo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="allergies">If yes, please specify allergies</label>
+                                <textarea id="allergies" name="allergies" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="medicalHistory">Existing Medical Conditions</label>
+                                <textarea id="medicalHistory" name="medicalHistory" rows="3" placeholder="Please mention any existing medical conditions or past surgeries"></textarea>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="currentMedications">Current Medications</label>
+                                <textarea id="currentMedications" name="currentMedications" rows="3" placeholder="List any medications you are currently taking"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <p><b>Do you have any of the following conditions?</b></p>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="diabetes" name="conditions" value="diabetes">
+                                <label for="diabetes">Diabetes</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="hypertension" name="conditions" value="hypertension">
+                                <label for="hypertension">Hypertension</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="asthma" name="conditions" value="asthma">
+                                <label for="asthma">Asthma</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="heartDisease" name="conditions" value="heartDisease">
+                                <label for="heartDisease">Heart Disease</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="thyroid" name="conditions" value="thyroid">
+                                <label for="thyroid">Thyroid Disorders</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency Contact -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-phone-alt"></i> Emergency Contact</h3>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="emergencyName">Contact Name <span class="required">*</span></label>
+                                <input type="text" id="emergencyName" name="emergencyName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyRelation">Relationship <span class="required">*</span></label>
+                                <input type="text" id="emergencyRelation" name="emergencyRelation" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergencyPhone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyEmail">Email</label>
+                                <input type="email" id="emergencyEmail" name="emergencyEmail">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="emergencyAddress">Address</label>
+                                <textarea id="emergencyAddress" name="emergencyAddress" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Terms and Privacy -->
+                    <div class="form-section">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="termsAgree" name="termsAgree" required>
+                            <label for="termsAgree">I confirm that the information provided is accurate and complete. I understand that this information will be used for my medical care and treatment. <span class="required">*</span></label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="privacyAgree" name="privacyAgree" required>
+                            <label for="privacyAgree">I have read and agree to the hospital's <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>. <span class="required">*</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="reset" class="btn secondary-btn">Clear Form</button>
+                        <button type="submit" class="btn primary-btn">Submit Registration</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-about">
+                        <img src="images/logo.png" alt="Hospital Logo" class="footer-logo">
+                        <h3>Shri Chattrapati Shivaji Maharaj Hospital</h3>
+                        <p>Providing quality healthcare services with compassion and excellence.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="index.html#doctors">Doctors</a></li>
+                            <li><a href="index.html#departments">Departments</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-departments">
+                        <h3>Departments</h3>
+                        <ul>
+                            <li><a href="index.html#departments">Cardiology</a></li>
+                            <li><a href="index.html#departments">Neurology</a></li>
+                            <li><a href="index.html#departments">Orthopedics</a></li>
+                            <li><a href="index.html#departments">Gynecology</a></li>
+                            <li><a href="index.html#departments">Pediatrics</a></li>
+                            <li><a href="index.html#departments">Dermatology</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Hospital Road, Pune, Maharashtra</li>
+                            <li><i class="fas fa-phone-alt"></i> 7499699895</li>
+                            <li><i class="fas fa-envelope"></i> poonamjundre725@gmail.com</li>
+                            <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 8:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 Shri Chattrapati Shivaji Maharaj Hospital. All rights reserved. Designed by <a href="#">Poonam Jundre</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/script.js"></script>
+    <script>
+        // Registration form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const registrationForm = document.getElementById('registrationForm');
+            
+            if(registrationForm) {
+                registrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple validation
+                    let isValid = true;
+                    const requiredFields = registrationForm.querySelectorAll('[required]');
+                    
+                    requiredFields.forEach(field => {
+                        if(!field.value) {
+                            isValid = false;
+                            field.classList.add('error');
+                        } else {
+                            field.classList.remove('error');
+                        }
+                    });
+                    
+                    // Check terms and privacy checkboxes
+                    const termsAgree = document.getElementById('termsAgree');
+                    const privacyAgree = document.getElementById('privacyAgree');
+                    
+                    if(!termsAgree.checked || !privacyAgree.checked) {
+                        isValid = false;
+                        alert('You must agree to the terms and privacy policy to register.');
+                    }
+                    
+                    if(isValid) {
+                        alert('Registration successful! Thank you for registering with Shri Chattrapati Shivaji Maharaj Hospital.');
+                        // In a real application, this would submit to a server
+                        // registrationForm.submit();
+                        
+                        // For demo purposes, redirect to index
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Please fill in all required fields.');
+                    }
+                });
+                
+                // Age calculation based on DOB
+                const dobInput = document.getElementById('dob');
+                const ageInput = document.getElementById('age');
+                
+                dobInput.addEventListener('change', function() {
+                    if(this.value) {
+                        const dob = new Date(this.value);
+                        const today = new Date();
+                        let age = today.getFullYear() - dob.getFullYear();
+                        const monthDifference = today.getMonth() - dob.getMonth();
+                        
+                        if(monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+                            age--;
+                        }
+                        
+                        ageInput.value = age;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Shri Chattrapati Shivaji Maharaj Hospital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .services-page {
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+        
+        .service-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 40px 0;
+        }
+        
+        .service-tab {
+            padding: 12px 24px;
+            background-color: var(--white);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .service-tab:hover, .service-tab.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .service-content {
+            display: none;
+        }
+        
+        .service-content.active {
+            display: block;
+        }
+        
+        .service-detail {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .service-icon i {
+            font-size: 1.8rem;
+        }
+        
+        .service-header h3 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            font-size: 1.8rem;
+        }
+        
+        .service-header p {
+            color: var(--text-light);
+        }
+        
+        .service-description {
+            margin-bottom: 30px;
+        }
+        
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-item i {
+            color: var(--accent-color);
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .service-image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .service-image {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .cta-section h3 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Hospital Logo" class="logo">
+            <div class="hospital-name">
+                <h1>Shri Chattrapati Shivaji Maharaj Hospital</h1>
+                <p>Excellence in Healthcare</p>
+            </div>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#departments">Departments</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="index.html#appointments">Appointments</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#login" class="login-btn">Patient Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-page">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Medical Services</h2>
+                    <div class="divider"></div>
+                    <p>We offer a wide range of medical services to meet all your healthcare needs</p>
+                </div>
+                
+                <div class="service-tabs">
+                    <div class="service-tab active" data-service="diagnostics">Diagnostics</div>
+                    <div class="service-tab" data-service="treatment">Treatment</div>
+                    <div class="service-tab" data-service="preventive">Preventive Care</div>
+                    <div class="service-tab" data-service="emergency">Emergency Services</div>
+                    <div class="service-tab" data-service="specialized">Specialized Care</div>
+                </div>
+                
+                <!-- Diagnostics Content -->
+                <div id="diagnostics" class="service-content active">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <div>
+                                <h3>Diagnostic Services</h3>
+                                <p>Accurate diagnosis is the first step towards effective treatment</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-description">
+                            <p>At Shri Chattrapati Shivaji Maharaj Hospital, we provide comprehensive diagnostic services using state-of-the-art equipment and technology. Our diagnostic department is staffed with experienced professionals who ensure accurate and timely results, enabling our doctors to provide the best possible treatment plans for our patients.</p>
+                        </div>
+                        
+                        <h4>Our Diagnostic Facilities Include:</h4>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Laboratory Services</h5>
+                                    <p>Comprehensive blood tests, urine analysis, and other pathological examinations.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Imaging Services</h5>
+                                    <p>X-rays, Ultrasound, CT Scan, and MRI with detailed reports.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Cardiac Diagnostics</h5>
+                                    <p>ECG, Echocardiography, Stress Tests, and Holter Monitoring.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Neurological Diagnostics</h5>
+                                    <p>EEG, EMG, and Nerve Conduction Studies.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>Our diagnostic services are available to both inpatients and outpatients. We offer quick turn-around times for test results, ensuring that treatment can begin promptly. For certain specialized tests, we have tie-ups with renowned reference laboratories to provide the most accurate results.</p>
+                        
+                        <div class="service-image-grid">
+                            <div class="service-image">
+                                <img src="images/lab.jpg" alt="Laboratory Services">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/mri.jpg" alt="MRI Machine">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/xray.jpg" alt="X-ray Facility">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Treatment Content -->
+                <div id="treatment" class="service-content">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div>
+                                <h3>Treatment Services</h3>
+                                <p>Comprehensive care for various medical conditions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-description">
+                            <p>Our hospital offers a wide range of treatment services across various specialties. With a team of expert doctors and modern facilities, we are equipped to handle both simple and complex medical conditions. We follow evidence-based treatment protocols and personalize care plans based on individual patient needs.</p>
+                        </div>
+                        
+                        <h4>Treatment Services We Offer:</h4>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Surgical Procedures</h5>
+                                    <p>Advanced surgical facilities with minimally invasive techniques across specialties.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Medical Management</h5>
+                                    <p>Comprehensive treatment for chronic and acute conditions using the latest medical protocols.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Physical Therapy</h5>
+                                    <p>Rehabilitation services to help patients recover from injuries, surgeries, or chronic conditions.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Interventional Procedures</h5>
+                                    <p>Non-surgical procedures like angioplasty, stenting, and catheterization.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>Our treatment approach focuses on holistic care, considering both the physical and emotional well-being of our patients. We have dedicated inpatient wards, ICUs, and operation theaters equipped with advanced technology to ensure the best outcomes for our patients.</p>
+                        
+                        <div class="service-image-grid">
+                            <div class="service-image">
+                                <img src="images/surgery.jpg" alt="Surgery">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/physical-therapy.jpg" alt="Physical Therapy">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/patient-care.jpg" alt="Patient Care">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Preventive Care Content -->
+                <div id="preventive" class="service-content">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Preventive Healthcare</h3>
+                                <p>Prevention is better than cure</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-description">
+                            <p>At Shri Chattrapati Shivaji Maharaj Hospital, we believe in the importance of preventive healthcare. Our preventive services aim to detect potential health issues before they become serious and to promote overall wellness through regular check-ups, screenings, and lifestyle guidance.</p>
+                        </div>
+                        
+                        <h4>Our Preventive Healthcare Services Include:</h4>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Health Check-up Packages</h5>
+                                    <p>Comprehensive health assessment packages tailored for different age groups and risk profiles.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Vaccination Services</h5>
+                                    <p>Complete range of vaccinations for children and adults as per standard guidelines.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Wellness Programs</h5>
+                                    <p>Programs focusing on diet, exercise, stress management, and lifestyle modification.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Cancer Screening</h5>
+                                    <p>Regular screenings for common cancers to detect and treat them at early stages.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>Our preventive healthcare services are designed to empower individuals to take charge of their health. Regular check-ups and screenings can help identify risk factors and early signs of disease, allowing for timely intervention and better outcomes.</p>
+                        
+                        <div class="service-image-grid">
+                            <div class="service-image">
+                                <img src="images/checkup.jpg" alt="Health Check-up">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/vaccination.jpg" alt="Vaccination">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/wellness.jpg" alt="Wellness Program">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Emergency Services Content -->
+                <div id="emergency" class="service-content">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <i class="fas fa-ambulance"></i>
+                            </div>
+                            <div>
+                                <h3>Emergency Services</h3>
+                                <p>24/7 care for critical situations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-description">
+                            <p>Our emergency department is operational 24 hours a day, 7 days a week, to provide immediate care for critical and life-threatening conditions. We have a team of emergency medicine specialists, supported by other specialists on call, to handle any medical emergency efficiently.</p>
+                        </div>
+                        
+                        <h4>Our Emergency Services Include:</h4>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Trauma Care</h5>
+                                    <p>Immediate attention to accident victims and trauma patients.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Cardiac Emergency</h5>
+                                    <p>Specialized care for heart attacks and other cardiac emergencies.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Stroke Management</h5>
+                                    <p>Quick assessment and treatment for stroke patients.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Ambulance Services</h5>
+                                    <p>Well-equipped ambulances with trained paramedics for quick transportation.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>Our emergency department is equipped with advanced life support systems, monitoring equipment, and quick access to diagnostic services. We follow a triage system to prioritize patients based on the severity of their condition, ensuring that critical cases receive immediate attention.</p>
+                        
+                        <div class="service-image-grid">
+                            <div class="service-image">
+                                <img src="images/emergency.jpg" alt="Emergency Department">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/ambulance.jpg" alt="Ambulance Service">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/er-staff.jpg" alt="Emergency Staff">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Specialized Care Content -->
+                <div id="specialized" class="service-content">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <div>
+                                <h3>Specialized Care</h3>
+                                <p>Expert care for specific medical needs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-description">
+                            <p>We offer specialized medical services across various departments to address specific health conditions and needs. Our specialists have extensive training and experience in their respective fields, ensuring that patients receive expert care for complex conditions.</p>
+                        </div>
+                        
+                        <h4>Our Specialized Services Include:</h4>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Cardiac Care</h5>
+                                    <p>Advanced cardiac procedures including angioplasty, pacemaker implantation, and cardiac rehabilitation.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Neurology Services</h5>
+                                    <p>Treatment for neurological disorders, stroke management, and neurosurgical procedures.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Orthopedic Procedures</h5>
+                                    <p>Joint replacements, spine surgeries, sports injury management, and rehabilitation.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h5>Maternal and Child Care</h5>
+                                    <p>Comprehensive obstetric and gynecological services, neonatal care, and pediatric treatments.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>Our specialized care units are equipped with advanced medical technology and staffed by multidisciplinary teams. We follow a patient-centered approach, ensuring that each individual receives personalized care based on their specific condition and needs.</p>
+                        
+                        <div class="service-image-grid">
+                            <div class="service-image">
+                                <img src="images/cardiac-care.jpg" alt="Cardiac Care">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/neurology.jpg" alt="Neurology Services">
+                            </div>
+                            <div class="service-image">
+                                <img src="images/maternity.jpg" alt="Maternal Care">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <h3>Need Medical Assistance?</h3>
+                    <p>Our dedicated team of healthcare professionals is committed to providing you with the best medical care. Whether you need a consultation, a specialized treatment, or emergency services, we are here to help.</p>
+                    <div class="cta-buttons">
+                        <a href="index.html#appointments" class="btn primary-btn">Book an Appointment</a>
+                        <a href="index.html#contact" class="btn secondary-btn">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-about">
+                        <img src="images/logo.png" alt="Hospital Logo" class="footer-logo">
+                        <h3>Shri Chattrapati Shivaji Maharaj Hospital</h3>
+                        <p>Providing quality healthcare services with compassion and excellence.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="doctors.html">Doctors</a></li>
+                            <li><a href="index.html#departments">Departments</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-departments">
+                        <h3>Departments</h3>
+                        <ul>
+                            <li><a href="index.html#departments">Cardiology</a></li>
+                            <li><a href="index.html#departments">Neurology</a></li>
+                            <li><a href="index.html#departments">Orthopedics</a></li>
+                            <li><a href="index.html#departments">Gynecology</a></li>
+                            <li><a href="index.html#departments">Pediatrics</a></li>
+                            <li><a href="index.html#departments">Dermatology</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Hospital Road, Pune, Maharashtra</li>
+                            <li><i class="fas fa-phone-alt"></i> 7499699895</li>
+                            <li><i class="fas fa-envelope"></i> poonamjundre725@gmail.com</li>
+                            <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 8:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 Shri Chattrapati Shivaji Maharaj Hospital. All rights reserved. Designed by <a href="#">Poonam Jundre</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const serviceTabs = document.querySelectorAll('.service-tab');
+            const serviceContents = document.querySelectorAll('.service-content');
+            
+            serviceTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    serviceTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get the service to show
+                    const serviceId = this.getAttribute('data-service');
+                    
+                    // Hide all service contents
+                    serviceContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Show the selected service content
+                    document.getElementById(serviceId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
